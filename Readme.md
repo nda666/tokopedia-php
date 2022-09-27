@@ -8,6 +8,11 @@
 
 Tokopedia Rest Client for PHP
 
+## Installation
+```bash
+composer require nda666/tokopedia-php
+```
+
 ## Usage
 
 ```php
