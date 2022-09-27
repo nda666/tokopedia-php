@@ -1,0 +1,8 @@
+vendor/
+.history/
+composer.lock
+.phpunit.result.cache
+.coverage
+coverage.xml
+.phpdoc
+phpdoc.*
