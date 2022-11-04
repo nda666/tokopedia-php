@@ -238,7 +238,7 @@ class Client
      *
      * @return \Psr\Http\Message\RequestInterface A Request object
      */
-    public function request($method, $uri, $query = [], $data = [], $headers = [])
+    public function request($method, $uri, $query = [], $data = null, $headers = [])
     {
         if (is_string($uri)) {
             $uri = str_replace(':fs_id', $this->getFsId(), $uri);
@@ -269,7 +269,17 @@ class Client
             $headers
         );
 
-        $this->currentRequest = new Request($method, $uri, $applyHeaders, $data instanceof MultipartStream ? $data : json_encode($data));
+        $this->currentRequest = new Request(
+            $method,
+            $uri,
+            $applyHeaders,
+            $data instanceof MultipartStream ?
+                $data : (is_null($data) ?
+                    null :
+                    json_encode($data)
+                )
+        );
+
 
         return $this->currentRequest;
     }
