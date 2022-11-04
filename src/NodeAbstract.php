@@ -52,7 +52,7 @@ abstract class NodeAbstract
     protected function get($uri, $requestParameters = [], $headers = [])
     {
 
-        $request = $this->client->request('GET', $uri, $requestParameters, [], $headers = []);
+        $request = $this->client->request('GET', $uri, $requestParameters, null, $headers);
         $response = $this->client->send($request);
 
         return new ResponseData($response);
