@@ -4,6 +4,11 @@ namespace TokopediaPhp\Interfaces;
 
 interface ProductInterface
 {
+    /**
+     * @param  array $params
+     * @return \TokopediaPhp\ResponseData
+     */
+    public function getBundleList($params = []);
 
     /**
      * This method will retrieve single product information either by product id

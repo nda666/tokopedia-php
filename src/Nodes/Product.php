@@ -10,6 +10,14 @@ class Product extends NodeAbstract implements ProductInterface
     /**
      * {@inheritDoc}
      */
+    public function getBundleList($params = [])
+    {
+        return $this->get("v1/products/bundle/fs/:fs_id/list", $params);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     public function getProducts($params = [])
     {
         return $this->get("inventory/v1/fs/:fs_id/product/info", $params);
