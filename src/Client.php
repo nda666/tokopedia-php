@@ -11,7 +11,9 @@ use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Uri;
 use GuzzleHttp\Psr7\Utils;
 use kamermans\OAuth2\GrantType\ClientCredentials;
+use kamermans\OAuth2\GrantType\RefreshToken;
 use kamermans\OAuth2\OAuth2Middleware;
+use kamermans\OAuth2\Persistence\Laravel5CacheTokenPersistence;
 use TokopediaPhp\Exception\Api\AuthException;
 use TokopediaPhp\Exception\Api\BadRequestException;
 use TokopediaPhp\Exception\Api\ClientException;
@@ -140,19 +142,26 @@ class Client
             ];
 
             $grantType = new ClientCredentials($reauthClient, $reauthConfig);
-            $oauth = new OAuth2Middleware($grantType);
+            $refreshGrantType = new RefreshToken($reauthClient, $reauthConfig);
+            $oauth = new OAuth2Middleware($grantType, $refreshGrantType);
+
+            if (isset($config['cacheProvider'])) {
+                $oauth->setTokenPersistence($config['cacheProvider']);
+            }
 
             $stack = HandlerStack::create();
             $stack->push($oauth);
 
             // This is the normal Guzzle client that you use in your application
-            $this->setHttpClient(new HttpClient(
-                [
-                    'handler' => $stack,
-                    'auth' => 'oauth',
-                    'base_uri' => $this->baseUrl
-                ]
-            ));
+            $this->setHttpClient(
+                new HttpClient(
+                    [
+                        'handler' => $stack,
+                        'auth' => 'oauth',
+                        'base_uri' => $this->baseUrl
+                    ]
+                )
+            );
         } else {
             $this->setHttpClient($config['httpClient'] ?: new HttpClient());
         }
@@ -225,7 +234,7 @@ class Client
 
     protected function defaultHeaders()
     {
-        return ['User-Agent' =>  $this->userAgent];
+        return ['User-Agent' => $this->userAgent];
     }
 
     /**
@@ -274,10 +283,10 @@ class Client
             $uri,
             $applyHeaders,
             $data instanceof MultipartStream ?
-                $data : (is_null($data) ?
-                    null :
-                    json_encode($data)
-                )
+            $data : (is_null($data) ?
+                null :
+                json_encode($data)
+            )
         );
 
 
