@@ -127,6 +127,7 @@ class Client
         $this->clientId = $config['clientId'];
         $this->fsId = $config['fsId'];
         $this->enableRetries = $config['enableRetries'];
+        $this->maxRetries = $config['maxRetries'];
 
         if (!$config['httpClient']) {
             $reauthClient = new HttpClient(
@@ -326,7 +327,7 @@ class Client
                     if ($this->enableRetries && $this->retriesCount < $this->maxRetries) {
                         $this->retriesCount++;
                         $wait = (int) $exception->getResponse()->getHeader('X-Ratelimit-Full-Reset-After')[0];
-                        sleep($wait);
+                        sleep($wait + 1); #make it to + 1 second to wait
                         return $this->retry();
                     }
                     $className = TooManyRequestException::class;
