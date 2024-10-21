@@ -305,6 +305,7 @@ class Client
     {
         try {
             $response = $this->httpClient->send($request);
+            $this->retriesCount = 0;
             return $response;
         } catch (\Exception $exception) {
             return $this->throwExceptionOrRetry($exception);
