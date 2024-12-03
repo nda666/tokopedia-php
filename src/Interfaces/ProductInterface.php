@@ -40,7 +40,7 @@ interface ProductInterface
      *
      * @param array $params
      * @param array $body
-     * @return void
+     * @return \TokopediaPhp\ResponseData
      */
     public function createProductV3($params = [], $body = []);
 
@@ -49,7 +49,7 @@ interface ProductInterface
      *
      * @param array $params
      * @param array $body
-     * @return void
+     * @return \TokopediaPhp\ResponseData
      */
     public function createProductV2($params = [], $body = []);
 
@@ -60,7 +60,7 @@ interface ProductInterface
      *
      * @param array $params
      * @param array $body
-     * @return void
+     * @return \TokopediaPhp\ResponseData
      */
     public function editProductV3($params = [], $body = []);
 
@@ -71,7 +71,7 @@ interface ProductInterface
      *
      * @param array $params
      * @param array $body
-     * @return void
+     * @return \TokopediaPhp\ResponseData
      */
     public function editProductV2($params = [], $body = []);
 
@@ -82,7 +82,7 @@ interface ProductInterface
      *
      * @param int $upload_id
      * @param array $params
-     * @return void
+     * @return \TokopediaPhp\ResponseData
      */
     public function checkUploadStatus($uploadId, $params = []);
 
@@ -91,7 +91,7 @@ interface ProductInterface
      *
      * @param array $params
      * @param array $body
-     * @return void
+     * @return \TokopediaPhp\ResponseData
      */
     public function setActiveProduct($params = [], $body = []);
 
@@ -100,7 +100,7 @@ interface ProductInterface
      *
      * @param array $params
      * @param array $body
-     * @return void
+     * @return \TokopediaPhp\ResponseData
      */
     public function setInactiveProduct($params = [], $body = []);
 
@@ -110,7 +110,7 @@ interface ProductInterface
      *
      * @param array $params
      * @param array $body
-     * @return void
+     * @return \TokopediaPhp\ResponseData
      */
     public function updatePriceOnly($params = [], $body = []);
 
@@ -120,7 +120,7 @@ interface ProductInterface
      *
      * @param array $params
      * @param array $body
-     * @return void
+     * @return \TokopediaPhp\ResponseData
      */
     public function updateStockOverwrite($params = [], $body = []);
 
@@ -130,7 +130,7 @@ interface ProductInterface
      *
      * @param array $params
      * @param array $body
-     * @return void
+     * @return \TokopediaPhp\ResponseData
      */
     public function updateStockIncrement($params = [], $body = []);
 
@@ -140,7 +140,7 @@ interface ProductInterface
      *
      * @param array $params
      * @param array $body
-     * @return void
+     * @return \TokopediaPhp\ResponseData
      */
     public function updateStockDecrement($params = [], $body = []);
 
@@ -150,7 +150,7 @@ interface ProductInterface
      *
      * @param array $params
      * @param array $body
-     * @return void
+     * @return \TokopediaPhp\ResponseData
      */
     public function deleteProduct($params = [], $body = []);
 
@@ -159,7 +159,7 @@ interface ProductInterface
      * shop_id needed for validate that product is owned by shop.
      *
      * @param array $params
-     * @return void
+     * @return \TokopediaPhp\ResponseData
      */
     public function getAllDiscussionProduct($params = []);
 
@@ -167,7 +167,7 @@ interface ProductInterface
      * This endpoint retrieve list of product annotation (product specification) based on category ID.
      *
      * @param array $params
-     * @return void
+     * @return \TokopediaPhp\ResponseData
      */
     public function getProductAnnotationByCategoryId($params = []);
 }

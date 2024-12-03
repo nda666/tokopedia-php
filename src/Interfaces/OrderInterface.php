@@ -60,7 +60,7 @@ interface OrderInterface
      * This endpoint updates the order status of an order_id
      * https://developer.tokopedia.com/openapi/guide/api-reference/tokopedia/order-api/confirm-shipping
      * @param int $orderId
-     * @return void
+     * @return \TokopediaPhp\ResponseData
      */
     public function updateOrderStatus($orderId, $body = []);
 
@@ -68,7 +68,7 @@ interface OrderInterface
      * You can request pick up using this endpoint
      * https://developer.tokopedia.com/openapi/guide/api-reference/tokopedia/order-api/request-pickup
      * @param array $body
-     * @return void
+     * @return \TokopediaPhp\ResponseData
      */
     public function requestPickUp($body = []);
 
