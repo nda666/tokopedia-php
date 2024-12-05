@@ -76,7 +76,7 @@ class Product extends NodeAbstract implements ProductInterface
      */
     public function checkUploadStatus($uploadId, $params = [])
     {
-        return $this->get("/v2/products/fs/:fs_id/status/:upload_id", $params);
+        return $this->get("/v2/products/fs/:fs_id/status/$uploadId", $params);
     }
 
     /**
