@@ -1,6 +1,6 @@
 {
   "name": "nda666/tokopedia-php",
-  "version": "v0.1.8",
+  "version": "v0.1.9",
   "description": "Tokopedia Partner API PHP SDK",
   "type": "library",
   "keywords": [

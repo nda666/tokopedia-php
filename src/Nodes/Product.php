@@ -68,7 +68,7 @@ class Product extends NodeAbstract implements ProductInterface
      */
     public function editProductV2($params = [], $body = [])
     {
-        return $this->patch("/v3/products/fs/:fs_id/edit", $params, $body);
+        return $this->patch("/v2/products/fs/:fs_id/edit", $params, $body);
     }
 
     /**
