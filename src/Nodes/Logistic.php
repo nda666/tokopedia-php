@@ -2,9 +2,10 @@
 
 namespace TokopediaPhp\Nodes;
 
+use TokopediaPhp\Interfaces\LogisticInterface;
 use TokopediaPhp\NodeAbstract;
 
-class Logistic extends NodeAbstract
+class Logistic extends NodeAbstract implements LogisticInterface
 {
 
     public function getShipmentInfo($params = [])

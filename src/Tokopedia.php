@@ -2,6 +2,7 @@
 
 namespace TokopediaPhp;
 
+use TokopediaPhp\Nodes\Campaign;
 use TokopediaPhp\Nodes\Category;
 use TokopediaPhp\Nodes\Encryption;
 use TokopediaPhp\Nodes\Finance;
@@ -9,14 +10,13 @@ use TokopediaPhp\Nodes\Interaction;
 use TokopediaPhp\Nodes\IpWhitelist;
 use TokopediaPhp\Nodes\Logistic;
 use TokopediaPhp\Nodes\Order;
-use TokopediaPhp\Nodes\Other;
 use TokopediaPhp\Nodes\Product;
 use TokopediaPhp\Nodes\Shop;
 
 class Tokopedia
 {
     /**
-     * @var TokopediaPhp\Tokopedia
+     * @var \TokopediaPhp\Tokopedia
      */
     protected $client;
 
@@ -112,5 +112,13 @@ class Tokopedia
     public function category()
     {
         return new Category($this->client);
+    }
+
+    /**
+     * @return \TokopediaPhp\Interfaces\CampaignInterface
+     */
+    public function campaign()
+    {
+        return new Campaign($this->client);
     }
 }

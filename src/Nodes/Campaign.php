@@ -7,7 +7,7 @@ use TokopediaPhp\NodeAbstract;
 
 class Campaign extends NodeAbstract implements CampaignInterface
 {
-    public function viewSlashPrice($params)
+    public function viewSlashPrice($params = [])
     {
         return $this->get("/v2/slash-price/fs/:fs_id/view", $params);
     }
