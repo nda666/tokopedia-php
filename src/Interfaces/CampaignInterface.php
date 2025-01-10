@@ -27,7 +27,7 @@ interface CampaignInterface
      * @param  array $params
      * @return \TokopediaPhp\ResponseData
      */
-    public function addSlashPrice($params = []);
+    public function addSlashPrice($params = [], $body = []);
 
     /**
      * This endpoint add slash price campaign into product.
@@ -35,7 +35,7 @@ interface CampaignInterface
      * @param  array $params
      * @return \TokopediaPhp\ResponseData
      */
-    public function updateSlashPrice($params = []);
+    public function updateSlashPrice($params = [], $body = []);
 
     /**
      * This endpoint cancel slash price campaign that already be set.
@@ -43,6 +43,6 @@ interface CampaignInterface
      * @param  array $params
      * @return \TokopediaPhp\ResponseData
      */
-    public function cancelSlashPrice($params = []);
+    public function cancelSlashPrice($params = [], $body = []);
 
 }

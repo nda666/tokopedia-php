@@ -17,19 +17,19 @@ class Campaign extends NodeAbstract implements CampaignInterface
         return $this->get("/v1/campaign/fs/:fs_id/view", $params);
     }
 
-    public function addSlashPrice($params = [])
+    public function addSlashPrice($params = [], $body = [])
     {
-        return $this->post("/v1/slash-price/fs/:fs_id/add", [], $params);
+        return $this->post("/v1/slash-price/fs/:fs_id/add", $params, $body);
     }
 
-    public function updateSlashPrice($params = [])
+    public function updateSlashPrice($params = [], $body = [])
     {
-        return $this->post("/v1/slash-price/fs/:fs_id/update", [], $params);
+        return $this->post("/v1/slash-price/fs/:fs_id/update", $params, $body);
     }
 
-    public function cancelSlashPrice($params = [])
+    public function cancelSlashPrice($params = [], $body = [])
     {
-        return $this->post("/v1/slash-price/fs/:fs_id/cancel", [], $params);
+        return $this->post("/v1/slash-price/fs/:fs_id/cancel", $params, $body);
     }
 
 }
